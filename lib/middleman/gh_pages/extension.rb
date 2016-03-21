@@ -2,7 +2,7 @@ require 'middleman-core'
 
 module Middleman
   module GhPages
-    class Extension < Extension
+    class Extension < Middleman::Extension
       option :remote, nil
 
       def initialize(app, options_hash = {}, &block)
