@@ -10,7 +10,7 @@ module Middleman
       def call
         middleman.build '-e', @environment
 
-        Dir.chdir(build_dir) do
+        Dir.chdir(@build_dir) do
           rm '-rf', '.git'
 
           git.init
