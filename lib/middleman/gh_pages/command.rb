@@ -1,11 +1,11 @@
 module Middleman
   module GhPages
     class Command < BasicObject
-      class Error < StandardError
+      class Error < ::StandardError
         attr_reader :status
 
         def initialize(status)
-          @status = status.exitstatus
+          @status = $?.exitstatus
         end
       end
 
@@ -21,14 +21,11 @@ module Middleman
       end
 
       def initialize(cmd)
-        @cmd = cmd
+        @cmd = cmd.to_s
       end
 
       def method_missing(name, *args, &block)
-        status = Kernel.public_send('`', [@cmd, *args].join(' '))
-        unless status.exitstatus.zero?
-          raise Error, status
-        end
+        raise Error unless ::Kernel.system(@cmd, name.to_s, *args.map(&:to_s))
       end
     end
   end
