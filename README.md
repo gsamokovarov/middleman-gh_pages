@@ -13,7 +13,7 @@ gem 'middleman-gh_pages'
 Or install it yourself as:
 
 ```
-gem install middleman-gh_pages
+$ gem install middleman-gh_pages
 ```
 
 ## Usage
