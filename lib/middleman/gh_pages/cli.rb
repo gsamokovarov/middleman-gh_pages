@@ -20,18 +20,21 @@ module Middleman
       private
 
       def deploy_options
-        GhPages.options.merge(
+        {
           build_dir: app.config.setting(:build_dir).value,
+          remote: GhPages.options[:remote],
           environment: options['environment']
-        )
+        }
       end
 
       def app
+        environment = options['environment']
+
         Middleman::Application.new do
           config[:mode] = :build
-          config[:environment] = options['environment']
+          config[:environment] = environment
 
-          Middleman::Logger.singleton(0, false)
+          Middleman::Logger.singleton(1, false)
         end
       end
     end
