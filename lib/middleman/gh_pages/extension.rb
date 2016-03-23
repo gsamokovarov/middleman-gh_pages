@@ -1,5 +1,3 @@
-require 'middleman-core'
-
 module Middleman
   module GhPages
     class Extension < Middleman::Extension

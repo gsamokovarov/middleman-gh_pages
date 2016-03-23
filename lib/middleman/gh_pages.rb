@@ -16,8 +16,5 @@ module Middleman
   end
 
   Cli::Base.register(GhPages::Cli, 'gh_pages', 'gh_pages [options]', 'Deploy to GitHub')
-
-  Extensions.register(:gh_pages) do
-    GhPages::Extension
-  end
+  Extensions.register(:gh_pages) { GhPages::Extension }
 end
