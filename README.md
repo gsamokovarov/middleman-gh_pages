@@ -29,9 +29,12 @@ end
 Adding an absolute remote name is a requirement, so we don't have to infer
 where to deploy to.
 
-The deploy is always one commit that is forced pushed into the gh-pages branch.
+The deploy is always one commit that is forced pushed into the `gh-pages` branch.
 You'll never run into merge conflicts, or an unemployable state. You can deploy
-anything, as long as you can force push to the `gh-pages` branch.
+anything, as long as you can force push to `gh-pages`.
+
+You can also deploy uncommitted changes as a new deploy commit is created on
+every run of:
 
 ```
 $ middleman gh_pages
