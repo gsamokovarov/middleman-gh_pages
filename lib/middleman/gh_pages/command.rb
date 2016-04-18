@@ -25,7 +25,9 @@ module Middleman
       end
 
       def method_missing(name, *args, &block)
-        raise Error unless ::Kernel.system(@cmd, name.to_s, *args.map(&:to_s))
+        unless ::Kernel.system(@cmd, name.to_s, *args.map(&:to_s))
+          ::Kernel.raise Error
+        end
       end
     end
   end
