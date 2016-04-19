@@ -8,7 +8,7 @@ module Middleman
       end
 
       def call
-        middleman.build '-e', @environment
+        bundle.exec 'middleman', 'build', '-e', @environment
 
         Dir.chdir(@build_dir) do
           rm '-rf', '.git'
@@ -24,8 +24,8 @@ module Middleman
 
       private
 
-      def middleman
-        @middleman ||= Command.middleman
+      def bundle
+        @bundle ||= Command.bundle
       end
 
       def git
