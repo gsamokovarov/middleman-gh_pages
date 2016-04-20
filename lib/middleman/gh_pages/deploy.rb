@@ -11,8 +11,6 @@ module Middleman
         bundle.exec 'middleman', 'build', '-e', @environment
 
         Dir.chdir(@build_dir) do
-          rm '-rf', '.git'
-
           git.init
           git.remote 'add', 'origin', @remote
           git.add '.'
