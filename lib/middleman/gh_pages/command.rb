@@ -4,8 +4,8 @@ module Middleman
       class Error < ::StandardError
         attr_reader :status
 
-        def initialize(status)
-          @status = $?.exitstatus
+        def initialize
+          @status = $?.exitstatus if $?
         end
       end
 
