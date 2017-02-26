@@ -28,7 +28,7 @@ module Middleman
       end
 
       def app
-        environment = options['environment']
+        environment = options['environment'].to_sym
 
         Middleman::Application.new do
           config[:mode] = :build
