@@ -5,7 +5,11 @@ module Middleman
         attr_reader :status
 
         def initialize
-          @status = $?.exitstatus if $?
+          @status = ($?.exitstatus if $?)
+        end
+
+        def to_s
+          @status ? @status.to_s : super
         end
       end
 
@@ -15,7 +19,7 @@ module Middleman
           if args.empty?
             command
           else
-            command.public_send(*args, &block)
+            command.__send__(*args, &block)
           end
         end
       end
@@ -26,7 +30,7 @@ module Middleman
 
       def method_missing(name, *args, &block)
         unless ::Kernel.system(@cmd, name.to_s, *args.map(&:to_s))
-          ::Kernel.raise Error
+          ::Kernel.raise ::Middleman::GhPages::Command::Error
         end
       end
     end
