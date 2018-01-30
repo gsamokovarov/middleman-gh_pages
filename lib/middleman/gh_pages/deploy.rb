@@ -22,7 +22,7 @@ module Middleman
           git.remote 'add', 'origin', @remote
           git.add '.'
           git.commit '-m', "Deploy on #{Time.now}"
-          git.checkout '-b', @branch
+          git.checkout '-B', @branch
           git.push '-f', 'origin', @branch
         end
       end
