@@ -8,6 +8,7 @@ module Middleman
       def initialize(options = {})
         @build_dir = options.fetch(:build_dir)
         @remote = options.fetch(:remote)
+        @branch = options.fetch(:branch)
         @environment = options.fetch(:environment)
       end
 
@@ -21,8 +22,8 @@ module Middleman
           git.remote 'add', 'origin', @remote
           git.add '.'
           git.commit '-m', "Deploy on #{Time.now}"
-          git.checkout '-b', 'gh-pages'
-          git.push '-f', 'origin', 'gh-pages'
+          git.checkout '-b', @branch
+          git.push '-f', 'origin', @branch
         end
       end
 

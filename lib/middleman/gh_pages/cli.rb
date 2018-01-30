@@ -23,6 +23,7 @@ module Middleman
         {
           build_dir: app.config.setting(:build_dir).value,
           remote: GhPages.options[:remote],
+          branch: GhPages.options[:branch],
           environment: options['environment']
         }
       end

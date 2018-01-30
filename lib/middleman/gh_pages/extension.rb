@@ -2,6 +2,7 @@ module Middleman
   module GhPages
     class Extension < Middleman::Extension
       option :remote, nil
+      option :branch, 'gh_pages'
 
       def initialize(app, options_hash = {}, &block)
         super
@@ -10,7 +11,10 @@ module Middleman
       end
 
       def after_configuration
-        GhPages.options = {remote: options.remote}
+        GhPages.options = {
+          remote: options.remote,
+          branch: options.branch
+        }
       end
     end
   end
