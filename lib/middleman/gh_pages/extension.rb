@@ -2,7 +2,7 @@ module Middleman
   module GhPages
     class Extension < Middleman::Extension
       option :remote, nil
-      option :branch, 'gh_pages'
+      option :branch, 'gh-pages'
 
       def initialize(app, options_hash = {}, &block)
         super
