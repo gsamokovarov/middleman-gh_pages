@@ -40,7 +40,16 @@ every run of:
 $ middleman gh_pages
 ```
 
-Hooray!
+Hooray! 🎉
+
+If you need to push to different branch than `gh-pages` you can specify that with:
+
+```ruby
+activate :gh_pages do |gh_pages|
+  gh_pages.remote = 'git@github.com:an_absolute/github_remote_name.git'
+  gh_pages.branch = 'master'
+end
+```
 
 ## Contributing
 
